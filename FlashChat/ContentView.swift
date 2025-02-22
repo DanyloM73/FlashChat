@@ -6,19 +6,16 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            if Auth.auth().currentUser != nil {
+                ChatView()
+            } else {
+                AuthView()
+            }
         }
-        .padding()
     }
-}
-
-#Preview {
-    ContentView()
 }
